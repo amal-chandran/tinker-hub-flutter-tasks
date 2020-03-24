@@ -45,7 +45,7 @@ class Timeline extends StatelessWidget {
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(color: Colors.black12),
+          decoration: BoxDecoration(color: Color.fromRGBO(235, 235, 235, 1)),
           padding: EdgeInsets.fromLTRB(20, 60, 20, 0),
           // padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
           child: Column(
