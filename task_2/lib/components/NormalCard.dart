@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class NormalCard extends StatelessWidget {
+  final String name;
+  final String location;
+  final String statusText;
+  final String userImg;
+  final String coverImg;
+
+  NormalCard(
+      {this.name, this.location, this.userImg, this.coverImg, this.statusText});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -8,14 +17,12 @@ class NormalCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       elevation: 0,
       child: Container(
-        height: 130,
+        height: 180,
         decoration: BoxDecoration(
             image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    "https://images.unsplash.com/photo-1579645009624-e726789ebdb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"))),
+                fit: BoxFit.cover, image: NetworkImage(coverImg))),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 8, 8, 8),
+          padding: const EdgeInsets.fromLTRB(15, 15, 8, 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -28,7 +35,7 @@ class NormalCard extends StatelessWidget {
                         shape: BoxShape.circle, color: Colors.white),
                     child: CircleAvatar(
                       radius: 20,
-                      backgroundImage: AssetImage('assets/user_image.png'),
+                      backgroundImage: NetworkImage(userImg),
                     ),
                   ),
                   Padding(
@@ -39,7 +46,7 @@ class NormalCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            "Anny Mary",
+                            name,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
@@ -57,7 +64,7 @@ class NormalCard extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "Lendon",
+                              location,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
@@ -72,7 +79,7 @@ class NormalCard extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       // decoration: BoxDecoration(color: Colors.black26),
                       child: IconButton(
-                        color: Colors.grey,
+                        color: Colors.white,
                         icon: Icon(Icons.image),
                         onPressed: () {},
                       ),
@@ -83,7 +90,7 @@ class NormalCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, left: 46),
                 child: Text(
-                  "From todays trip :)",
+                  statusText,
                   style: TextStyle(
                       color: Colors.white54, fontWeight: FontWeight.bold),
                 ),
