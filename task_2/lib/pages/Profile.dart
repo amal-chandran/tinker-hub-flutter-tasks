@@ -4,6 +4,9 @@ import 'package:task_2/components/Timeline/NotificationCard.dart';
 
 class Profile extends StatelessWidget {
   final String name = "Amal Chandran";
+  final String location = "Lendon";
+  final String desc =
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ";
 
   List statusList = [
     {
@@ -39,6 +42,12 @@ class Profile extends StatelessWidget {
     }
   ];
 
+  List accountData = [
+    {"title": "Photo", "value": "255"},
+    {"title": "Followers", "value": "425"},
+    {"title": "Follows", "value": "355"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +55,7 @@ class Profile extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           decoration: BoxDecoration(color: Colors.black12),
-          padding: EdgeInsets.fromLTRB(20, 60, 20, 0),
+          padding: EdgeInsets.fromLTRB(40, 60, 20, 0),
           // padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,8 +74,8 @@ class Profile extends StatelessWidget {
               ),
               Container(
                 // decoration: BoxDecoration(color: Colors.black26),
-                padding: EdgeInsets.only(left: 40, top: 10.0, bottom: 5),
-                child: Column(
+                padding: EdgeInsets.only(left: 20, top: 10.0, bottom: 5),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
@@ -78,26 +87,91 @@ class Profile extends StatelessWidget {
                             offset: Offset.fromDirection(90, 2))
                       ], shape: BoxShape.circle, color: Colors.black26),
                       child: CircleAvatar(
-                        radius: 50,
+                        radius: 30,
                         backgroundImage: AssetImage('assets/profile.jpg'),
                       ),
                     ),
-                    Row(
-                      children: <Widget>[
-                        Text("Hello $name!",
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("$name",
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          Container(
+                            width: 150,
+                            padding: const EdgeInsets.only(
+                                top: 5.0, bottom: 5, left: 2),
+                            child: Text(desc,
+                                maxLines: 4,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.black45,
+                                  fontSize: 12,
+                                  // fontWeight: FontWeight.bold
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 2.0),
+                            child: Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 4, left: 2),
+                                  child: Icon(
+                                    Icons.location_on,
+                                    size: 11,
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                                Text(
+                                  location,
+                                  style: TextStyle(
+                                    color: Colors.black45,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
+                ),
+              ),
+              Container(
+                // decoration: BoxDecoration(color: Colors.black26),
+                padding:
+                    EdgeInsets.only(left: 30, top: 20.0, bottom: 20, right: 15),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: accountData.map((data) {
+                    return Column(
+                      children: <Widget>[
+                        Text(
+                          data["title"],
+                          style: TextStyle(color: Colors.black45, fontSize: 12),
+                        ),
+                        Text(
+                          data["value"],
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    );
+                  }).toList(),
                 ),
               ),
               Expanded(
                 child: Container(
                     // decoration: BoxDecoration(color: Colors.black26),
-                    padding: EdgeInsets.only(left: 37, top: 0),
+                    padding: EdgeInsets.only(left: 17, top: 0),
                     child: ListView.builder(
                       padding: EdgeInsets.only(top: 0, bottom: 10),
                       itemCount: statusList.length,
