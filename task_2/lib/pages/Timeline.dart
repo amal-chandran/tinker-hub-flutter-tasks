@@ -28,13 +28,13 @@ class Timeline extends StatelessWidget {
       "type": "Normal"
     },
     {
-      "name": "Lexus Gutkowski",
+      "name": "Sincere Macejkovic",
       "userImg":
-          "https://s3.amazonaws.com/uifaces/faces/twitter/jeremymouton/128.jpg",
+          "https://s3.amazonaws.com/uifaces/faces/twitter/nicollerich/128.jpg",
       "coverImg":
-          "https://images.unsplash.com/photo-1517426877272-57ff9b87d921?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1584743241753-a727f5d13ff4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
       "location": "Landon",
-      "statusText": "A loving memory :)",
+      "statusText": "A hilling ride !",
       "type": "Normal"
     }
   ];
