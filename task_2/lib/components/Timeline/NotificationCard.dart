@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class NotificationCard extends StatelessWidget {
 // NotificationCard()
-
+  final List<String> notificationImages = [
+    "https://s3.amazonaws.com/uifaces/faces/twitter/amandabuzard/128.jpg",
+    "https://s3.amazonaws.com/uifaces/faces/twitter/flashmurphy/128.jpg"
+  ];
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -70,7 +73,7 @@ class NotificationCard extends StatelessWidget {
                         vertical: 8.0, horizontal: 4),
                     child: CircleAvatar(
                       radius: 15,
-                      backgroundImage: AssetImage('assets/user_image.png'),
+                      backgroundImage: NetworkImage(notificationImages[0]),
                     ),
                   ),
                   Padding(
@@ -78,7 +81,7 @@ class NotificationCard extends StatelessWidget {
                         vertical: 8.0, horizontal: 4),
                     child: CircleAvatar(
                       radius: 15,
-                      backgroundImage: AssetImage('assets/user_image.png'),
+                      backgroundImage: NetworkImage(notificationImages[1]),
                     ),
                   ),
                   Padding(
