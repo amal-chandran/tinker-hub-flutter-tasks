@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_2/components/Profile/RepliedCard.dart';
 import 'package:task_2/components/Timeline/NormalCard.dart';
 import 'package:task_2/components/Timeline/NotificationCard.dart';
 
@@ -168,37 +169,71 @@ class Profile extends StatelessWidget {
                   }).toList(),
                 ),
               ),
-              Expanded(
-                child: Container(
-                    // decoration: BoxDecoration(color: Colors.black26),
-                    padding: EdgeInsets.only(left: 17, top: 0),
-                    child: ListView.builder(
-                      padding: EdgeInsets.only(top: 0, bottom: 10),
-                      itemCount: statusList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var status = statusList[index];
-                        var padding = EdgeInsets.symmetric(vertical: 8.0);
-                        if (index == 0) padding = EdgeInsets.only(bottom: 8.0);
+              Container(
+                  // decoration: BoxDecoration(color: Colors.black26),
+                  padding: EdgeInsets.only(left: 17, top: 0),
+                  // height: 500,
+                  // width: 700,
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        "Activity",
+                        style: TextStyle(
+                          color: Colors.black26,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 4),
+                        child: Container(
+                            width: 20,
+                            height: 20,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, color: Colors.black26),
+                            child: Text(
+                              "+2",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            )),
+                      ),
 
-                        if (status["type"] == "Normal") {
-                          return Padding(
-                            padding: padding,
-                            child: NormalCard(
-                                name: status['name'],
-                                location: status['location'],
-                                userImg: status['userImg'],
-                                statusText: status['statusText'],
-                                coverImg: status['coverImg']),
-                          );
-                        } else {
-                          return Padding(
-                            padding: padding,
-                            child: NotificationCard(),
-                          );
-                        }
-                      },
-                    )),
-              )
+//Dots
+                      Row(
+                        children: [1, 2, 3]
+                            .map(
+                              (data) => Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 4),
+                                child: Container(
+                                  width: 7,
+                                  height: 7,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: data == 1
+                                          ? Colors.pink
+                                          : Colors.black26),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      )
+                    ],
+                  )),
+              Container(
+                  // decoration: BoxDecoration(color: Colors.black26),
+                  padding: EdgeInsets.only(left: 17, top: 0),
+                  // height: 500,
+                  // width: 700,
+                  child: Column(
+                    children: <Widget>[
+                      RepliedCard(),
+                    ],
+                  )),
             ],
           )),
     );
