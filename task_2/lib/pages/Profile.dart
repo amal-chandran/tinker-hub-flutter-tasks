@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_2/components/Profile/AlbumCard.dart';
 import 'package:task_2/components/Profile/RepliedCard.dart';
 import 'package:task_2/components/Timeline/NormalCard.dart';
 import 'package:task_2/components/Timeline/NotificationCard.dart';
@@ -203,7 +204,6 @@ class Profile extends StatelessWidget {
                                   color: Colors.white),
                             )),
                       ),
-
 //Dots
                       Row(
                         children: [1, 2, 3]
@@ -234,6 +234,36 @@ class Profile extends StatelessWidget {
                   // width: 700,
                   child: Column(
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6.0),
+                        child: RepliedCard(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 6.0),
+                        child: Row(
+                          children: <Widget>[
+                            Flexible(
+                              fit: FlexFit.tight,
+                              child: Container(
+                                height: 140,
+                                margin: EdgeInsets.only(left: 5, right: 8),
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(4)),
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                            "https://images.unsplash.com/photo-1584743241753-a727f5d13ff4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"))),
+                              ),
+                            ),
+                            Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
+                              child: AlbumCard(),
+                            )
+                          ],
+                        ),
+                      ),
                       RepliedCard(),
                     ],
                   )),
