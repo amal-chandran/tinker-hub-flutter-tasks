@@ -44,19 +44,46 @@ class Home extends StatelessWidget {
     var sideRight = productsList.sublist(
         (productsList.length ~/ 2).toInt(), productsList.length);
     return Container(
-      width: double.infinity,
-      height: double.infinity,
+      // width: double.infinity,
+      // height: double.infinity,
       padding: EdgeInsets.fromLTRB(16, 51, 16, 16),
-      decoration: BoxDecoration(color: Colors.white),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Shop",
-              style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Shop",
+                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.menu,
+                  //   ),
+                  //   onPressed: () => {},
+                  // ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.shopping_cart,
+                    ),
+                    onPressed: () => {},
+                  ),
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.search,
+                  //   ),
+                  //   onPressed: () => {},
+                  // )
+                ],
+              ),
+            ],
           ),
           Row(
             children: ["All", "Electronics", "Fasion"]

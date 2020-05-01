@@ -5,6 +5,7 @@ class ProductModel {
   double id;
   String imageURL;
   String location;
+  String desc;
   double price;
   Color bgColor;
 
@@ -13,6 +14,7 @@ class ProductModel {
       this.name,
       this.bgColor,
       this.location,
+      this.desc = "",
       this.imageURL,
       this.price});
 }
