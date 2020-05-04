@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:task_3/components/app_conatiner.dart';
+import 'package:task_3/components/round_icon_btn.dart';
 import 'package:task_3/models/product_model.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -34,186 +38,163 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(color: widget.productData.bgColor),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Stack(
-                children: <Widget>[
-                  Positioned(
-                    top: 50,
-                    child: IconButton(
-                      onPressed: () => {},
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Image.asset(
-                    widget.productData.imageURL,
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                padding:
-                    EdgeInsets.only(top: 35, bottom: 20, left: 20, right: 20),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(28),
-                      topRight: Radius.circular(28)),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    log("Tets");
+    return AppContainer(
+      child: Expanded(
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(color: widget.productData.bgColor),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: Stack(
                   children: <Widget>[
-                    Text(
-                      widget.productData.name,
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    Image.asset(
+                      widget.productData.imageURL,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(
-                        widget.productData.location,
+                    Positioned(
+                      top: 50,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          size: 30,
+                          color: Colors.white,
+                        ),
+                        onPressed: () => Navigator.pushNamed(context, "/"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding:
+                      EdgeInsets.only(top: 35, bottom: 20, left: 20, right: 20),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(28),
+                        topRight: Radius.circular(28)),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        widget.productData.name,
                         style: TextStyle(
-                            color: Colors.green[400],
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                            fontSize: 30, fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Text(
-                        widget.productData.desc,
-                        maxLines: 5,
-                        style: TextStyle(
-                            color: Colors.black45,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          widget.productData.location,
+                          style: TextStyle(
+                              color: Colors.green[400],
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.black12,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(28),
-                                )
-                                // topRight: Radius.circular(28)),
-                                ),
-                            // margin: EdgeInsets.only(left: -10),
-                            child: Row(
-                              children: <Widget>[
-                                IconButton(
-                                  // padding: EdgeInsets.only(left: 0),
-                                  icon: Icon(
-                                    Icons.add_circle_outline,
-                                    size: 30,
-                                  ),
-                                  onPressed: this.handleAdd,
-                                ),
-                                Text(
-                                  this.quantity.toString(),
-                                  style: TextStyle(
-                                      color: Colors.black87,
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.remove_circle_outline,
-                                    size: 30,
-                                  ),
-                                  onPressed: this.handleRemove,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Text(
-                            "\$" +
-                                (this.quantity * widget.productData.price)
-                                    .toString(),
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text(
+                          widget.productData.desc,
+                          maxLines: 5,
+                          style: TextStyle(
+                              color: Colors.black45,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.only(right: 10),
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 14, horizontal: 16),
+                      Container(
+                        padding: EdgeInsets.only(top: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
                               decoration: BoxDecoration(
-                                  color: Colors.pink[300],
+                                  color: Colors.black12,
                                   borderRadius: BorderRadius.all(
-                                    Radius.circular(10),
+                                    Radius.circular(28),
                                   )
                                   // topRight: Radius.circular(28)),
                                   ),
-                              child: Icon(
-                                Icons.favorite,
-                                size: 30,
-                              )),
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 14, horizontal: 16),
-                              decoration: BoxDecoration(
-                                  color: Colors.green,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(10),
-                                  )
-                                  // topRight: Radius.circular(28)),
-                                  ),
+                              // margin: EdgeInsets.only(left: -10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Icon(
-                                    Icons.shopping_basket,
-                                    size: 30,
-                                    color: Colors.white70,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      "Basket",
-                                      style: TextStyle(
-                                          color: Colors.white70,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.w500),
+                                  IconButton(
+                                    // padding: EdgeInsets.only(left: 0),
+                                    icon: Icon(
+                                      Icons.add_circle_outline,
+                                      size: 30,
                                     ),
+                                    onPressed: this.handleAdd,
+                                  ),
+                                  Text(
+                                    this.quantity.toString(),
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.remove_circle_outline,
+                                      size: 30,
+                                    ),
+                                    onPressed: this.handleRemove,
                                   ),
                                 ],
                               ),
                             ),
-                          )
-                        ],
+                            Text(
+                              "\$" +
+                                  (this.quantity * widget.productData.price)
+                                      .toString(),
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12.0),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                                margin: EdgeInsets.only(right: 10),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 14, horizontal: 16),
+                                decoration: BoxDecoration(
+                                    color: Colors.pink[300],
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    )
+                                    // topRight: Radius.circular(28)),
+                                    ),
+                                child: Icon(
+                                  Icons.favorite,
+                                  size: 30,
+                                )),
+                            Expanded(
+                              child: RoundIconBtn(
+                                btnColor: Colors.green,
+                                btnIcon: Icons.shopping_basket,
+                                btnLabel: "Basket",
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

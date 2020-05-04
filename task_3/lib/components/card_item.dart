@@ -17,66 +17,72 @@ class CardItem extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 5),
       child: Stack(
         children: <Widget>[
-          Container(
-            width: length * 0.319,
-            // height: length * 0.404,
-            decoration: BoxDecoration(
-                color: product.bgColor,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Image.asset(
-                    product.imageURL,
-                    height: length * .276,
-                    width: double.infinity,
-                  ),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, "/product_details"),
+            child: Container(
+              width: length * 0.319,
+              // height: length * 0.404,
+              decoration: BoxDecoration(
+                  color: product.bgColor,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Image.asset(
+                      product.imageURL,
+                      height: length * .276,
+                      width: double.infinity,
+                    ),
 
-                  // Image.network(
-                  //   this.imageURL,
-                  //   height: 130,
-                  //   width: double.infinity,
-                  // ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
+                    // Image.network(
+                    //   this.imageURL,
+                    //   height: 130,
+                    //   width: double.infinity,
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            product.name,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: length * 0.031),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                product.name,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: length * 0.031),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Text(
+                                  product.location,
+                                  style: TextStyle(
+                                    fontSize: (length * 0.022).toDouble(),
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),
                             child: Text(
-                              product.location,
+                              "\$" + product.price.toString(),
                               style: TextStyle(
-                                fontSize: (length * 0.022).toDouble(),
-                                fontWeight: FontWeight.w400,
+                                fontSize: length * 0.026,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
-                          ),
+                          )
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 4.0),
-                        child: Text(
-                          "\$" + product.price.toString(),
-                          style: TextStyle(
-                            fontSize: length * 0.026,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
